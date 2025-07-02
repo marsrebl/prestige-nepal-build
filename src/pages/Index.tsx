@@ -115,7 +115,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?w=1920&h=1080&fit=crop')`
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/int3.jpg')`
           }}
         />
         
@@ -180,7 +180,7 @@ const Index = () => {
             </div>
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop"
+                src="/images/int4.jpg"
                 alt="Modern Nepali Architecture"
                 className="rounded-lg shadow-xl w-full h-80 object-cover"
               />

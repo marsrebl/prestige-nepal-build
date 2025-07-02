@@ -80,6 +80,49 @@ const InteriorDesign = () => {
           </div>
         </div>
       </section>
+      {/* Gallery Section */}
+<section className="py-16 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">Project Gallery</h2>
+
+    <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {[
+        { title: 'Modern TV Showcase', file: '../images/int1.jpg' },
+        { title: 'Modern Kitchen', file: '../images/int2.jpg' },
+        { title: 'Modern Kitchen', file: '../images/int3.jpg' },
+        { title: 'Attractive Living room', file: '../images/int4.jpg' },
+        { title: 'Modern Kitchen', file: '../images/int5.jpg' },
+        { title: 'Modern Celling', file: '../images/int6.jpg' },
+        { title: 'TV Showcase', file: '../images/int7.jpg' },
+        { title: 'Modern Celling', file: '../images/int8.jpg' },
+        { title: 'Modern celling', file: '../images/int9.jpg' },
+        { title: 'Attractive Stairs', file: '../images/int10.jpg' },
+        { title: 'Modern showcase', file: '../images/int11.jpg' },
+        { title: 'Modern Bedroom', file: '../images/int12.jpg' },
+        { title: 'Modern Bedroom', file: '../images/int13.jpg' },
+        { title: 'Modern Kitchen', file: '../images/int14.jpg' },
+        { title: 'Modern wardrobe', file: '../images/int15.jpg' },
+        { title: 'Modern TV showcase', file: '../images/int16.jpg' },
+        { title: 'Modern Interior', file: '../images/int17.jpg' },
+        { title: 'Attrative Lobby', file: '../images/int18.jpg' },
+        { title: 'Modern Kitchen', file: '../images/int19.jpg' },
+        // Add more entries here
+      ].map((img, index) => (
+        <div key={index} className="overflow-hidden rounded-xl shadow-md bg-gray-100">
+          <img
+            src={`/images/${img.file}`}
+            alt={img.title}
+            className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+          />
+          <div className="p-4">
+            <h4 className="text-lg font-semibold text-gray-800">{img.title}</h4>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Design Styles */}
       <section className="py-16 bg-gray-50">
@@ -238,6 +281,7 @@ const InteriorDesign = () => {
           </Link>
         </div>
       </section>
+      
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-12">
