@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, Phone, MapPin, Users, Home, ArrowRight, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,12 +38,12 @@ const Index = () => {
   };
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'services', label: 'Services' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'team', label: 'Our Team' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'home', label: t('nav.home') },
+    { id: 'about', label: t('nav.about') },
+    { id: 'services', label: t('nav.services') },
+    { id: 'projects', label: t('nav.projects') },
+    { id: 'team', label: t('nav.team') },
+    { id: 'contact', label: t('nav.contact') }
   ];
 
   return (
@@ -52,14 +55,14 @@ const Index = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <h1 className="text-2xl font-bold text-gray-800">
-                <span className="text-amber-600">PRESTIGE</span>
-                <span className="block text-sm font-medium text-gray-600 leading-tight">DESIGN & BUILDERS</span>
+                <span className="text-amber-600">{t('hero.title')}</span>
+                <span className="block text-sm font-medium text-gray-600 leading-tight">{t('hero.subtitle')}</span>
               </h1>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
+            <div className="hidden md:flex items-center space-x-8">
+              <div className="flex items-baseline space-x-8">
                 {navItems.map((item) => (
                   <button
                     key={item.id}
@@ -74,6 +77,7 @@ const Index = () => {
                   </button>
                 ))}
               </div>
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile menu button */}
@@ -104,6 +108,9 @@ const Index = () => {
                     {item.label}
                   </button>
                 ))}
+                <div className="px-3 py-2">
+                  <LanguageSwitcher />
+                </div>
               </div>
             </div>
           )}
@@ -121,21 +128,21 @@ const Index = () => {
         
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-            <span className="text-amber-400">PRESTIGE</span>
-            <span className="block text-3xl md:text-4xl mt-2">DESIGN & BUILDERS</span>
+            <span className="text-amber-400">{t('hero.title')}</span>
+            <span className="block text-3xl md:text-4xl mt-2">{t('hero.subtitle')}</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200 animate-fade-in" style={{animationDelay: '0.3s'}}>
-            Crafting Excellence in Interior Design & Iron Structure Construction
+            {t('hero.description')}
           </p>
           <p className="text-lg mb-10 text-gray-300 animate-fade-in" style={{animationDelay: '0.6s'}}>
-            Building Nepal's Future with Innovation and Precision
+            {t('hero.tagline')}
           </p>
           <button
             onClick={() => scrollToSection('contact')}
             className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg animate-fade-in"
             style={{animationDelay: '0.9s'}}
           >
-            Let's Talk
+            {t('hero.cta')}
           </button>
         </div>
 
@@ -148,33 +155,29 @@ const Index = () => {
       <section id="about" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">About Us</h2>
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('about.title')}</h2>
             <div className="w-24 h-1 bg-amber-600 mx-auto"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-                Building Dreams, Creating Legacies
+                {t('about.heading')}
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                At Prestige Design and Builders, we are committed to transforming spaces and structures 
-                across Nepal with our expertise in <strong>Interior Design</strong> and <strong>Iron Structure Construction</strong>. 
-                Our mission is to deliver exceptional quality while honoring the rich architectural heritage of Nepal.
+                {t('about.description1')}
               </p>
               <p className="text-gray-600 leading-relaxed">
-                With years of experience in the construction industry, we specialize in creating modern, 
-                earthquake-resistant structures that blend seamlessly with Nepal's unique landscape and culture. 
-                From residential interiors to commercial iron frameworks, we bring innovation to every project.
+                {t('about.description2')}
               </p>
               <div className="grid grid-cols-2 gap-6 mt-8">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-amber-600">100+</div>
-                  <div className="text-gray-600">Projects Completed</div>
+                  <div className="text-gray-600">{t('about.projects')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-amber-600">15+</div>
-                  <div className="text-gray-600">Years Experience</div>
+                  <div className="text-gray-600">{t('about.experience')}</div>
                 </div>
               </div>
             </div>
@@ -193,9 +196,9 @@ const Index = () => {
       <section id="services" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('services.title')}</h2>
             <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600">Excellence in Design and Construction</p>
+            <p className="text-xl text-gray-600">{t('services.subtitle')}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -210,22 +213,18 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Interior Design</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">{t('services.interior.title')}</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Transform your spaces with our expert interior design services. We blend modern aesthetics 
-                  with traditional Nepali elements to create unique, functional, and beautiful interiors.
+                  {t('services.interior.description')}
                 </p>
-                <ul className="text-gray-600 mb-6 space-y-2">
-                  <li>• Residential & Commercial Design</li>
-                  <li>• Traditional Nepali Interiors</li>
-                  <li>• Modern & Minimalist Styles</li>
-                  <li>• Space Planning & Optimization</li>
-                </ul>
+                <div className="text-gray-600 mb-6 whitespace-pre-line">
+                  {t('services.interior.features')}
+                </div>
                 <Link
                   to="/interior-design"
                   className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
                 >
-                  Learn More
+                  {t('services.learnMore')}
                   <ArrowRight size={16} className="ml-2" />
                 </Link>
               </div>
@@ -242,22 +241,18 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Iron Structure Construction</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">{t('services.iron.title')}</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Build strong, durable, and earthquake-resistant structures with our specialized iron 
-                  construction expertise. Perfect for Nepal's seismic conditions.
+                  {t('services.iron.description')}
                 </p>
-                <ul className="text-gray-600 mb-6 space-y-2">
-                  <li>• Earthquake Resistant Design</li>
-                  <li>• Industrial & Commercial Buildings</li>
-                  <li>• Prefabricated Structures</li>
-                  <li>• Cost-Effective Solutions</li>
-                </ul>
+                <div className="text-gray-600 mb-6 whitespace-pre-line">
+                  {t('services.iron.features')}
+                </div>
                 <Link
                   to="/iron-structure"
                   className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
                 >
-                  Learn More
+                  {t('services.learnMore')}
                   <ArrowRight size={16} className="ml-2" />
                 </Link>
               </div>
@@ -270,9 +265,9 @@ const Index = () => {
       <section id="projects" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Projects</h2>
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('projects.title')}</h2>
             <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600">Showcasing Excellence Across Nepal</p>
+            <p className="text-xl text-gray-600">{t('projects.subtitle')}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -286,9 +281,9 @@ const Index = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">Corporate Office Complex</h3>
-                <p className="text-gray-600 mb-3">Kathmandu, Nepal</p>
-                <p className="text-gray-600 text-sm">Modern office space with traditional Nepali architectural elements and earthquake-resistant iron structure.</p>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{t('projects.project1.title')}</h3>
+                <p className="text-gray-600 mb-3">{t('projects.project1.location')}</p>
+                <p className="text-gray-600 text-sm">{t('projects.project1.description')}</p>
               </div>
             </div>
 
@@ -302,9 +297,9 @@ const Index = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">Luxury Residential Interior</h3>
-                <p className="text-gray-600 mb-3">Pokhara, Nepal</p>
-                <p className="text-gray-600 text-sm">Elegant interior design blending modern comfort with traditional Nepali craftsmanship.</p>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{t('projects.project2.title')}</h3>
+                <p className="text-gray-600 mb-3">{t('projects.project2.location')}</p>
+                <p className="text-gray-600 text-sm">{t('projects.project2.description')}</p>
               </div>
             </div>
 
@@ -318,9 +313,9 @@ const Index = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">High-Tech Industrial Facility</h3>
-                <p className="text-gray-600 mb-3">Birtamode, Nepal</p>
-                <p className="text-gray-600 text-sm">State-of-the-art industrial building with advanced iron framework and modern design.</p>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{t('projects.project3.title')}</h3>
+                <p className="text-gray-600 mb-3">{t('projects.project3.location')}</p>
+                <p className="text-gray-600 text-sm">{t('projects.project3.description')}</p>
               </div>
             </div>
           </div>
@@ -331,9 +326,9 @@ const Index = () => {
       <section id="team" className="py-20 bg-gradient-to-br from-amber-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Team</h2>
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('team.title')}</h2>
             <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600">Meet the Experts Behind Our Success</p>
+            <p className="text-xl text-gray-600">{t('team.subtitle')}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
@@ -347,13 +342,12 @@ const Index = () => {
                     </div>
                     <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white"></div>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">JC MANBIR RAJBANSI</h3>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{t('team.member1.name')}</h3>
                   <div className="inline-block px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-semibold mb-4">
-                    Managing Director
+                    {t('team.member1.position')}
                   </div>
                   <p className="text-gray-600 leading-relaxed">
-                    With over 15 years of experience in construction and design, JC Manbir leads our team 
-                    with vision and expertise in delivering exceptional projects across Nepal.
+                    {t('team.member1.description')}
                   </p>
                   <div className="mt-6 flex justify-center space-x-2">
                     <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
@@ -374,13 +368,12 @@ const Index = () => {
                     </div>
                     <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white"></div>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">KRISHNA KHATIWADA</h3>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{t('team.member2.name')}</h3>
                   <div className="inline-block px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-semibold mb-4">
-                    Senior Designer
+                    {t('team.member2.position')}
                   </div>
                   <p className="text-gray-600 leading-relaxed">
-                    Krishna brings creativity and technical expertise to every interior design project, 
-                    specializing in blending modern aesthetics with traditional Nepali elements.
+                    {t('team.member2.description')}
                   </p>
                   <div className="mt-6 flex justify-center space-x-2">
                     <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
@@ -398,54 +391,54 @@ const Index = () => {
       <section id="contact" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('contact.title')}</h2>
             <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600">Let's Build Something Amazing Together</p>
+            <p className="text-xl text-gray-600">{t('contact.subtitle')}</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">Get In Touch</h3>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-6">{t('contact.form.title')}</h3>
               <form className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name
+                    {t('contact.form.name')}
                   </label>
                   <input
                     type="text"
                     id="name"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-600 focus:border-transparent transition-colors"
-                    placeholder="Your Name"
+                    placeholder={t('contact.form.namePlaceholder')}
                   />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address
+                    {t('contact.form.email')}
                   </label>
                   <input
                     type="email"
                     id="email"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-600 focus:border-transparent transition-colors"
-                    placeholder="your@email.com"
+                    placeholder={t('contact.form.emailPlaceholder')}
                   />
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
+                    {t('contact.form.message')}
                   </label>
                   <textarea
                     id="message"
                     rows={6}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-600 focus:border-transparent transition-colors"
-                    placeholder="Tell us about your project..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                   ></textarea>
                 </div>
                 <button
                   type="submit"
                   className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
                 >
-                  Send Message
+                  {t('contact.form.send')}
                 </button>
               </form>
             </div>
@@ -453,15 +446,15 @@ const Index = () => {
             {/* Contact Info & Map */}
             <div className="space-y-8">
               <div className="bg-white rounded-xl shadow-lg p-8">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+                <h3 className="text-2xl font-semibold text-gray-800 mb-6">{t('contact.info.title')}</h3>
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <MapPin className="text-amber-600 mr-3" size={20} />
-                    <span className="text-gray-600">Birtamode, Nepal</span>
+                    <span className="text-gray-600">{t('contact.location')}</span>
                   </div>
                   <div className="flex items-center">
                     <Phone className="text-amber-600 mr-3" size={20} />
-                    <span className="text-gray-600">+977-9800-123456</span>
+                    <span className="text-gray-600">{t('contact.phone')}</span>
                   </div>
                 </div>
               </div>
@@ -488,33 +481,32 @@ const Index = () => {
             {/* Company Info */}
             <div className="md:col-span-2">
               <h3 className="text-2xl font-bold mb-4">
-                <span className="text-amber-400">PRESTIGE</span>
-                <span className="block text-lg">DESIGN & BUILDERS</span>
+                <span className="text-amber-400">{t('hero.title')}</span>
+                <span className="block text-lg">{t('hero.subtitle')}</span>
               </h3>
               <p className="text-gray-400 mb-4 max-w-md">
-                Building Nepal's Future with Excellence. We specialize in Interior Design and Iron Structure Construction, 
-                creating spaces that blend modern innovation with traditional Nepali heritage.
+                {t('footer.description')}
               </p>
             </div>
 
             {/* Contact Info */}
             <div>
-              <h4 className="text-lg font-semibold mb-4">Contact Information</h4>
+              <h4 className="text-lg font-semibold mb-4">{t('footer.contact')}</h4>
               <div className="space-y-3">
                 <div className="flex items-center">
                   <MapPin className="text-amber-400 mr-3" size={18} />
-                  <span className="text-gray-300">Birtamode, Nepal</span>
+                  <span className="text-gray-300">{t('contact.location')}</span>
                 </div>
                 <div className="flex items-center">
                   <Phone className="text-amber-400 mr-3" size={18} />
-                  <span className="text-gray-300">+977-9800-123456</span>
+                  <span className="text-gray-300">{t('contact.phone')}</span>
                 </div>
               </div>
             </div>
 
             {/* Social Media */}
             <div>
-              <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
+              <h4 className="text-lg font-semibold mb-4">{t('footer.follow')}</h4>
               <div className="flex space-x-4">
                 <a
                   href="https://facebook.com/prestigedesignbuilders"
@@ -538,14 +530,14 @@ const Index = () => {
                 </a>
               </div>
               <p className="text-gray-400 text-sm mt-4">
-                Stay updated with our latest projects and construction insights
+                {t('footer.social.description')}
               </p>
             </div>
           </div>
 
           <div className="border-t border-gray-700 mt-8 pt-8 text-center">
             <p className="text-gray-400">
-              © 2024 Prestige Design and Builders. All rights reserved. | Building Excellence Since 2009
+              {t('footer.copyright')}
             </p>
           </div>
         </div>
