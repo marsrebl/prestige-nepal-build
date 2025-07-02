@@ -36,7 +36,7 @@ const Gallery = () => {
     },
     {
       id: 4,
-      category: 'iron',
+      category: 'commercial',
       image: '/images/int4.jpg',
       title: t('gallery.projects.commercial_building.title'),
       location: t('gallery.projects.commercial_building.location'),
@@ -60,7 +60,7 @@ const Gallery = () => {
     },
     {
       id: 7,
-      category: 'interior',
+      category: 'commercial',
       image: '/images/int7.jpg',
       title: t('gallery.projects.hotel_lobby.title'),
       location: t('gallery.projects.hotel_lobby.location'),
@@ -76,7 +76,7 @@ const Gallery = () => {
     },
     {
       id: 9,
-      category: 'interior',
+      category: 'residential',
       image: '/images/int9.jpg',
       title: t('gallery.projects.residential.title'),
       location: t('gallery.projects.residential.location'),
@@ -91,8 +91,40 @@ const Gallery = () => {
   const filters = [
     { id: 'all', label: t('gallery.filters.all') },
     { id: 'interior', label: t('gallery.filters.interior') },
-    { id: 'iron', label: t('gallery.filters.iron') }
+    { id: 'iron', label: t('gallery.filters.iron') },
+    { id: 'residential', label: t('gallery.filters.residential') },
+    { id: 'commercial', label: t('gallery.filters.commercial') }
   ];
+
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'interior':
+        return 'bg-blue-100 text-blue-800';
+      case 'iron':
+        return 'bg-orange-100 text-orange-800';
+      case 'residential':
+        return 'bg-green-100 text-green-800';
+      case 'commercial':
+        return 'bg-purple-100 text-purple-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case 'interior':
+        return t('gallery.filters.interior');
+      case 'iron':
+        return t('gallery.filters.iron');
+      case 'residential':
+        return t('gallery.filters.residential');
+      case 'commercial':
+        return t('gallery.filters.commercial');
+      default:
+        return category;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -175,12 +207,8 @@ const Gallery = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute top-4 left-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      project.category === 'interior' 
-                        ? 'bg-blue-100 text-blue-800' 
-                        : 'bg-orange-100 text-orange-800'
-                    }`}>
-                      {project.category === 'interior' ? t('gallery.filters.interior') : t('gallery.filters.iron')}
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(project.category)}`}>
+                      {getCategoryLabel(project.category)}
                     </span>
                   </div>
                 </div>

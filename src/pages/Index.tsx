@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, Phone, MapPin, Users, Home, ArrowRight, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -81,7 +82,8 @@ const Index = () => {
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center space-x-4">
+              <LanguageSwitcher />
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-gray-700 hover:text-amber-600 transition-colors"
@@ -108,9 +110,6 @@ const Index = () => {
                     {item.label}
                   </button>
                 ))}
-                <div className="px-3 py-2">
-                  <LanguageSwitcher />
-                </div>
               </div>
             </div>
           )}
@@ -201,7 +200,7 @@ const Index = () => {
             <p className="text-xl text-gray-600">{t('services.subtitle')}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
             {/* Interior Design Card */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105">
               <div className="relative h-64">
@@ -220,13 +219,21 @@ const Index = () => {
                 <div className="text-gray-600 mb-6 whitespace-pre-line">
                   {t('services.interior.features')}
                 </div>
-                <Link
-                  to="/interior-design"
-                  className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                >
-                  {t('services.learnMore')}
-                  <ArrowRight size={16} className="ml-2" />
-                </Link>
+                <div className="flex space-x-4">
+                  <Link
+                    to="/interior-design"
+                    className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                  >
+                    {t('services.learnMore')}
+                    <ArrowRight size={16} className="ml-2" />
+                  </Link>
+                  <button
+                    onClick={() => scrollToSection('contact')}
+                    className="inline-flex items-center border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                  >
+                    {t('services.getQuote')}
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -248,13 +255,77 @@ const Index = () => {
                 <div className="text-gray-600 mb-6 whitespace-pre-line">
                   {t('services.iron.features')}
                 </div>
-                <Link
-                  to="/iron-structure"
+                <div className="flex space-x-4">
+                  <Link
+                    to="/iron-structure"
+                    className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                  >
+                    {t('services.learnMore')}
+                    <ArrowRight size={16} className="ml-2" />
+                  </Link>
+                  <button
+                    onClick={() => scrollToSection('contact')}
+                    className="inline-flex items-center border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                  >
+                    {t('services.getQuote')}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Residential Construction Card */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <div className="relative h-64">
+                <img
+                  src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&h=400&fit=crop"
+                  alt="Residential Construction"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">{t('services.residential.title')}</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {t('services.residential.description')}
+                </p>
+                <div className="text-gray-600 mb-6 whitespace-pre-line">
+                  {t('services.residential.features')}
+                </div>
+                <button
+                  onClick={() => scrollToSection('contact')}
                   className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
                 >
-                  {t('services.learnMore')}
+                  {t('services.getQuote')}
                   <ArrowRight size={16} className="ml-2" />
-                </Link>
+                </button>
+              </div>
+            </div>
+
+            {/* Commercial Construction Card */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <div className="relative h-64">
+                <img
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop"
+                  alt="Commercial Construction"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">{t('services.commercial.title')}</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {t('services.commercial.description')}
+                </p>
+                <div className="text-gray-600 mb-6 whitespace-pre-line">
+                  {t('services.commercial.features')}
+                </div>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                >
+                  {t('services.getQuote')}
+                  <ArrowRight size={16} className="ml-2" />
+                </button>
               </div>
             </div>
           </div>
