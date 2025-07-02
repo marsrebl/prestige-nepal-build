@@ -319,6 +319,98 @@ const Index = () => {
               </div>
             </div>
           </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/gallery"
+              className="inline-flex items-center bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300"
+            >
+              {t('projects.viewAll')}
+              <ArrowRight size={16} className="ml-2" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Client Testimonials Section */}
+      <section id="testimonials" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('testimonials.title')}</h2>
+            <div className="w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
+            <p className="text-xl text-gray-600">{t('testimonials.subtitle')}</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <div className="bg-gradient-to-br from-amber-50 to-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-amber-100">
+              <div className="flex items-center mb-6">
+                <div className="flex space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-600 mb-6 italic">"{t('testimonials.review1.text')}"</p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold">R</span>
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-gray-800">{t('testimonials.review1.name')}</h4>
+                  <p className="text-gray-600 text-sm">{t('testimonials.review1.position')}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="bg-gradient-to-br from-amber-50 to-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-amber-100">
+              <div className="flex items-center mb-6">
+                <div className="flex space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-600 mb-6 italic">"{t('testimonials.review2.text')}"</p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold">S</span>
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-gray-800">{t('testimonials.review2.name')}</h4>
+                  <p className="text-gray-600 text-sm">{t('testimonials.review2.position')}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="bg-gradient-to-br from-amber-50 to-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-amber-100">
+              <div className="flex items-center mb-6">
+                <div className="flex space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-600 mb-6 italic">"{t('testimonials.review3.text')}"</p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold">A</span>
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-gray-800">{t('testimonials.review3.name')}</h4>
+                  <p className="text-gray-600 text-sm">{t('testimonials.review3.position')}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
